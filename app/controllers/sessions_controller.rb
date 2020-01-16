@@ -2,10 +2,10 @@ class SessionsController < ApplicationController
   def new
   end
 
-  def create 
+  def create
     user = User.find_by(email: params[:session][:email])
     if user
-      sign_in user
+      signed_in user
       redirect_to user
     else
       flash.now[:danger] = 'Invalid email'
@@ -14,8 +14,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out
-    if logged_in?
+    sign_out
+    if signed_in?
       redirect_to root_path
     end
   end

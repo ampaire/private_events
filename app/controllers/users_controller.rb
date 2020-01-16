@@ -16,19 +16,19 @@ class UsersController < ApplicationController
   def show
     if signed_in?
       @user = User.find_by(id: session[:user_id])
+      @user_events = @user.events
     else
       redirect_to signin_path
     end
   end
 
-  def going
-    @event = Event.find(params[:id])
-    @user = current_user
+  def index
+    @users = User.all
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :email)
+    params.require(:user).permit(:name, :email)
   end
 end

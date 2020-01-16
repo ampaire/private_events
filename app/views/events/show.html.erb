@@ -1,0 +1,26 @@
+<h1><%= @event.name %></h1>
+<h1>Event details</h1>
+<section>
+  <div class="content">
+    <h3>
+      <%= @event.username %>
+    </h3>
+    <p>
+      Description:
+      <%= @event.description %>
+    </p>
+    <p>Location:
+      <%= @event.location %>
+    </p>
+    <% if @is_upcoming %>
+      <p>
+        It will take place:
+    <% else %>
+        <p>It took place:
+    <% end %>
+        <%= @event.time.strftime("%d/%m/%Y") %>
+      </p>
+      <p>Created by:
+        <%= @event.creator %></p>
+    </div>
+  </section>
