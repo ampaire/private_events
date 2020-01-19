@@ -12,9 +12,10 @@
   <% events.each do |event| %>
   <tr>
     <td><%= event.time.strftime("%d/%m/%Y")  %></td>
-    <td><%= link_to event.name, event_path(event) %></td>
+    <td><%= link_to event.username, event_path(event) %></td>
     <td><%= event.location %></td>
     <td><%= link_to event.creator, user_path(event.creator) %></td>
+    <td class="text-center"><%= event.attendees.count %></td>
   </tr>
   <% end %>   
 </table>

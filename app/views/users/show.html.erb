@@ -6,7 +6,7 @@
     <%= render partial: "events/event", object: @user.events, as: 'events' %>
   </div>
 <% else %>
-  <h3 class="centered-text">You didn't create any events yet.</h3>
+  <h3 class="centered-text">You haven't created any events yet.</h3>
 <% end %>
 <%= render partial: 'events/upcoming_past',
            locals: { upcoming: @upcoming_events, past: @past_events } %>

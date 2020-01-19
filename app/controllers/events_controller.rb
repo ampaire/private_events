@@ -5,8 +5,8 @@ class EventsController < ApplicationController
     if signed_in?
       @event = current_user.events.build
     else
-      flash[:danger] = "Kindly log in to create an event"
-      redirect_to signup_path
+      flash[:danger] = 'Kindly log in to create an event'
+      redirect_to signin_path
     end
   end
 
@@ -39,13 +39,13 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event)
-          .permit(:name, :description, :location, :time)
+      .permit(:name, :description, :location, :time)
   end
 
   def log_in_user
-    unless signed_in?
-      flash[:danger] = "Kindly log in to create an event"
-      redirect_to login_path
-    end
+    return if signed_in?
+
+    flash[:danger] = 'Kindly log in'
+    redirect_to signin_path
   end
 end
