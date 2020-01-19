@@ -27,8 +27,8 @@ class EventsController < ApplicationController
 
   def show
     @user = current_user
-    @event = Event.find(params[:id])
-    @is_upcoming = Event.upcoming.include?(@event)
+    @event = Event.all
+    # @is_upcoming = Event.upcoming.include?(@event)
   end
 
   def signed_in?
