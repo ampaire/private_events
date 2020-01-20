@@ -30,6 +30,7 @@ class EventsController < ApplicationController
   def show
     @user = current_user
     @event = Event.all
+    @is_upcoming = Event.upcoming.include?(@event)
   end
 
   def signed_in?
