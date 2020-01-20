@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EventsController < ApplicationController
   before_action :log_in_user, only: [:create]
 
@@ -28,7 +30,6 @@ class EventsController < ApplicationController
   def show
     @user = current_user
     @event = Event.all
-    # @is_upcoming = Event.upcoming.include?(@event)
   end
 
   def signed_in?
@@ -39,7 +40,7 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event)
-      .permit(:name, :description, :location, :time)
+          .permit(:name, :description, :location, :date)
   end
 
   def log_in_user

@@ -8,7 +8,7 @@
 	      <li><%= link_to "Event",   events_path  %></li>
 	      <li><%= link_to "About",   about_path %></li>
 	      <% if signed_in? %>
-	        <li><%= link_to "#{current_user.username} (Log Out)", logout_path, method: "delete" %></li>
+	        <li><%= link_to "#{current_user.username} (Log Out)", signout_path, method: "delete" %></li>
 	      <% else %>
 	        <li><%= link_to "Sign In", signin_path %></li>
 	      <% end %>

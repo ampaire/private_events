@@ -1,28 +1,24 @@
-<h1><%= @event.name %></h1>
-<h1>Event details</h1>
+<h1><%= @event.name %>s Lists</h1>
 <section>
   <div class="content">
-    <h3>
-      <%= @event.name %>
-    </h3>
-    <p>
-      Description:
-      <%= @event.description %>
-    </p>
-    <p>Location:
-      <%= @event.location %>
-    </p>
-    <% if @is_upcoming %>
-      <p>
-        It will take place:
-    <% else %>
-        <p>It took place:
+    <% if @event.any? %>
+      <h3><%= @event.name %></h3>
+      <p>Description: <%= @event.description %></p>
+      <p>Location: <%= @event.location %></p>
+      
+      <% if @is_upcoming %>
+        <p>
+          It will take place:
+          <% else %>
+              <p>It took place:
+          <% end %>
+              <%= @event.date.strftime("%d/%m/%Y") %>
+          </p>
+          <p>Created by:
+          <%= @event.creator %>
+        </p>
     <% end %>
-        <%= @event.time.strftime("%d/%m/%Y") %>
-      </p>
-      <p>Created by:
-        <%= @event.creator %></p>
-    </div>
+  </div>
     <% if @user && @is_upcoming %>
       <% unless @user.attended_events.include?(@event) %>
         <%= link_to "Attend to event", attend_path(id: @event.id), method: :patch, class: "btn btn-primary" %>
@@ -30,6 +26,7 @@
         <%= link_to "Not going anymore", not_attend_path(id: @event.id), method: :delete, class: "btn btn-danger" %>
       <% end %>
     <% end %>
+
     <h3>Attendees List</h3>
     <% if @event.attendees.any? %>
       <ol>

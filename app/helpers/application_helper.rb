@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   # Returns the full title on a each page
   def full_title(page_title = '')

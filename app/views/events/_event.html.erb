@@ -9,7 +9,7 @@
     </tr>
   </thead>
 
-  <% events.each do |event| %>
+  <% @events.each do |event| %>
   <tr>
     <td><%= event.time.strftime("%d/%m/%Y")  %></td>
     <td><%= link_to event.username, event_path(event) %></td>
