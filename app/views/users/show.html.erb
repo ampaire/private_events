@@ -1,12 +1,9 @@
-<h2 class="centered-text">Welcome
-  <%= @user.username %></h2>
-<% if @user_events.any? %>
-  <h3 class="centered-text" >Events created by you:</h3>
-  <div class="attending-events-container">
-    <%= render partial: "events/event", object: @user.events, as: 'events' %>
+<div class="main">
+  <% provide(:button_text, 'Create an Event') %>
+  <div class="create">
+    <h1><%= @user.name %></h1>
+    <%= link_to 'Create a new event', new_event_path %>
   </div>
-<% else %>
-  <h3 class="centered-text">You haven't created any events yet. <%= link_to "Create Event", event_path %></h3>
-<% end %>
-<%= render partial: 'events/upcoming_past',
-           locals: { upcoming: @upcoming_events, past: @past_events } %>
+  <%= render 'events/upcoming' %>
+</div>
+

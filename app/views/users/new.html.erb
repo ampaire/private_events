@@ -1,13 +1,5 @@
-<h1>Sign Up</h1>
-<%=  form_for @user, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10" do |f| %>
-  <br/>
-  <%= f.label :username %>
-  <%= f.text_field :username, class: 'form-control' %>
-  <br />
-  <%= f.label :email %>
-  <%= f.email_field :email, class: 'form-control' %> 
-  <br /> 
-	<div class="text-center">
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
-	</div>
-<% end %>
+<% provide(:button_text, 'Sign up') %>
+<div class="form">
+  <h1>SIGN UP</h1><br>
+  <%= render 'layouts/form', url: signup_path(@user) %>
+</div>

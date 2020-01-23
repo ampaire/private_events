@@ -1,53 +1,47 @@
 # frozen_string_literal: true
 
 class EventsController < ApplicationController
-  before_action :log_in_user, only: [:create]
-
   def new
-    if signed_in?
-      @event = current_user.events.build
-    else
-      flash[:danger] = 'Kindly log in to create an event'
-      redirect_to signin_path
-    end
+    @event = Event.new
+    @user = current_user
   end
 
   def create
     @event = current_user.events.build(event_params)
+    @user = current_user
     if @event.save
-      redirect_to event_path(id: @event.id)
+      @event.attendees.create(attendee_id: current_user.id)
+      redirect_to @event
     else
-      render 'new'
+      render 'events/new'
     end
   end
 
+  def show
+    @event = Event.find_by(id: params[:id])
+    @user = @event.creator
+    @attendees = @event.attendees
+  end
+
+  def destroy; end
+
   def index
     @events = Event.all
-    @past_events = @events.past
-    @upcoming_events = @events.upcoming
+    @upcoming_events = self.upcoming_events
+    @prev_events = self.prev_events
   end
 
-  def show
-    @user = current_user
-    @event = Event.all
-    @is_upcoming = Event.upcoming.include?(@event)
+  def upcoming_events
+    Event.where('date > ?', Time.now)
   end
 
-  def signed_in?
-    !current_user.nil?
+  def prev_events
+    Event.where('date < ?', Time.now)
   end
 
   private
 
   def event_params
-    params.require(:event)
-          .permit(:name, :description, :location, :date)
-  end
-
-  def log_in_user
-    return if signed_in?
-
-    flash[:danger] = 'Kindly log in'
-    redirect_to signin_path
+    params.require(:event).permit(:description, :date)
   end
 end
