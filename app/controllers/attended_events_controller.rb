@@ -15,4 +15,5 @@ class AttendedEventsController < ApplicationController
   def attendance_params
     params.require(:attendance).permit(:attendee_id, :attendedevent_id)
   end
+
 end
