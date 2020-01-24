@@ -8,4 +8,8 @@ class Event < ApplicationRecord
            foreign_key: 'attended_event_id',
            dependent: :destroy
   validates :description, presence: true, length: { maximum: 100 }
+
+  def creator
+    User.find_by(id: creator_id).name
+  end
 end

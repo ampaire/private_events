@@ -7,8 +7,8 @@
       <ol>
         <% @attendees.each do |attendee| %>
           <li><%= render attendee %></li>
-          <li><%= render 'events/attendance_form'%>
         <% end %>
+        <li><%= render 'events/attendance_form'%>
       </ol>
     <% end %>
   </div>
