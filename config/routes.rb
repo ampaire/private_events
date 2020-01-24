@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get "/signup", to: "users#new"
 
-  patch "/attend", to: "users#attending"
+  put "/attend", to: "users#attending"
   delete "/not_attend", to: "users#not_attending"
 
   resources :users

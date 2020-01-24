@@ -25,7 +25,6 @@ class UsersController < ApplicationController
   def attending
     @event = Event.find(params[:id])
     @user = current_user.attended_events << @event
-    @user.save
     redirect_to event_path(id: @event.id)
   end
 

@@ -1,9 +1,4 @@
 <div id="pull-right">
-<% if @user && @is_upcoming %>
-  <% unless @user.attended_events.include?(@event) %>
-    <%= link_to "Attend to event", attend_path(id: @event.id), method: :patch, class: "btn btn-primary" %>
-  <% else %>
-    <%= link_to "Not going anymore", not_attend_path(id: @event.id), method: :delete, class: "btn btn-danger" %>
-  <% end %>
-<% end %>
+    <%= link_to "Attend", attend_path(id: @event.id), method: "put", class: "btn btn-primary" %>
+    <%= link_to "Cancel", not_attend_path(id: @event.id), method: 'delete', class: "btn btn-danger" %>
 </div>
