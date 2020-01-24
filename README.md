@@ -26,7 +26,7 @@ A site similar to a private Eventbrite which allows users to create events and t
   Finally, run the test suite to verify that everything is working correctly:
   
   ```
-  $ rspec spec --format documentation
+  $ rspec spec --format documentation or rspec
   ```
   
   If the test suite passes, you'll be ready to run the app in a local server:

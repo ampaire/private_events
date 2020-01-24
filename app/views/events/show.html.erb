@@ -1,12 +1,14 @@
-<div class="main">
-  <h1><%= @event.description %></h1>
-  <% if @event.attendees.any? %>
-    <p class="atd">Number of attendees: <%= @event.attendees.count %></h3>
-    <p>Event attendees are as follows:</p>
-    <ol class="attendees">
-      <% @attendees.each do |attendee| %>
-        <li><%= render attendee %></li>
-      <% end %>
-    </ol>
-  <% end %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1><%= @event.description %></h1>
+    <% if @event.attendees.any? %>
+      <p>Number of attendees: <%= @event.attendees.count %></h3>
+      <p>Event attendees are as follows:</p>
+      <ol>
+        <% @attendees.each do |attendee| %>
+          <li><%= render attendee %></li>
+        <% end %>
+      </ol>
+    <% end %>
+  </div>
 </div>

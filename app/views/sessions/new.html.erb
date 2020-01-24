@@ -1,11 +1,11 @@
-<div class="form">
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
   <h1>LOG IN</h1>
   <%= form_for(:session, url: login_path) do |f| %>
 
-    <%= f.label :name, class: "form-label" %>
-    <%= f.text_field :name, class: "form-text", placeholder: "Enter your name here" %>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
 
-    <%= f.submit "Sign in", class: 'form-btn' %>
-
-  <% end %>
+    <%= f.submit "Sign in", class: "btn btn-primary" %>
+  </div>
 </div>
