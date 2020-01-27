@@ -1,6 +1,11 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <h1>Events</h1>
-    <%= render 'events/upcoming' %>
-  </div>
-</div>
+<%= render 'events/create_event_button' %>
+<% if @events.any? %>
+  <br /> <br />
+  <div class="event-header">UPCOMING EVENTS (<%= @upcoming_events.count %>)</div>
+  <br/>
+  <%= render 'shared/events_list', events: @upcoming_events %>
+  <br />
+  <div class="event-header">PAST EVENTS (<%= @past_events.count %>)</div>
+  <br />
+  <%= render 'shared/events_list', events: @past_events %>
+<% end %>

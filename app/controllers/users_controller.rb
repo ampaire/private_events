@@ -8,30 +8,21 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in @user
-      redirect_to @user
+      sign_in @user
+      remember @user
+      flash[:success] = 'Thank you for your sign up'
+      redirect_to user_path(@user)
     else
-      render 'new'
+      render :new
     end
   end
 
   def show
     @user = User.find(params[:id])
-    @events = @user.events
-    @upcoming_events = current_user.upcoming_events
-    @prev_events = current_user.prev_events
-  end
-
-  def attending
-    @event = Event.find(params[:id])
-    @user = current_user.attended_events << @event
-    redirect_to event_path(id: @event.id)
-  end
-
-  def not_attending
-    @event = Event.find(params[:id])
-    @user = current_user.attended_events.delete(@event)
-    redirect_to event_path(id: @event.id)
+    @hosting_events = @user.hosting_events.paginate(page: params[:page],
+                                                    per_page: per_page)
+    @attended_events = @user.attended_events.paginate(page: params[:page],
+                                                      per_page: per_page)
   end
 
   private

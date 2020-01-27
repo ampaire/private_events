@@ -1,12 +1,29 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <% provide(:button_text, 'Create an Event') %>
-      <div class="create">
-        <h1><%= @user.name %></h1>
-        <div class= "pull-right">
-        <%= link_to 'Create a new event', new_event_path %>
-        </div>
+<% if logged_in? %>
+  <%= render 'events/create_event_button' %>
+  <div class="user-show">
+    <div class="hosting-events-upcoming">
+      <div>
+        <h1>HOSTING EVENTS - UPCOMING (<%= @hosting_events.upcoming_events.count %>) </h1>
       </div>
-    <%= render 'events/upcoming' %>
+      <%= render 'shared/events_list', events: @hosting_events.upcoming_events %>
+    </div>
+    <div class="hosting-events-past">
+      <div>
+        <h1>HOSTED EVENTS - PAST (<%= @hosting_events.past_events.count %>)</h1>
+      </div>
+      <%= render 'shared/events_list', events: @hosting_events.past_events %>
+    </div>
+    <div class="attended-events-upcoming">
+      <div>
+        <h1>ATTENDING EVENTS - UPCOMING (<%= @attended_events.upcoming_events.count %>)</h1>
+      </div>
+      <%= render 'shared/events_list', events: @attended_events.upcoming_events %>
+    </div>
+    <div class="attended-events-past">
+      <div>
+        <h1>ATTENDED EVENTS - PAST (<%= @attended_events.past_events.count %>)</h1>
+      </div>
+      <%= render 'shared/events_list', events: @attended_events.past_events %>
+    </div>
   </div>
-</div>
+<% end %>

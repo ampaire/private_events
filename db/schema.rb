@@ -2,38 +2,44 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# This file is the source Rails uses to define your schema when running `rails
-# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
-# be faster and is potentially less error prone than running all of your
-# migrations from scratch. Old migrations may fail to apply correctly if those
-# migrations use external dependencies or application code.
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_172331) do
+ActiveRecord::Schema.define(version: 2019_08_09_113241) do
 
-  create_table "attended_events", force: :cascade do |t|
+  create_table "attendances", force: :cascade do |t|
     t.integer "attendee_id"
     t.integer "attended_event_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["attendee_id", "attended_event_id"], name: "index_attended_events_on_attendee_id_and_attended_event_id", unique: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attended_event_id"], name: "index_attendances_on_attended_event_id"
+    t.index ["attendee_id", "attended_event_id"], name: "index_attendances_on_attendee_id_and_attended_event_id", unique: true
+    t.index ["attendee_id"], name: "index_attendances_on_attendee_id"
   end
 
   create_table "events", force: :cascade do |t|
-    t.datetime "date"
+    t.string "title"
+    t.date "date"
+    t.string "location"
     t.text "description"
-    t.integer "creator_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["creator_id", "created_at"], name: "index_events_on_creator_id_and_created_at"
+    t.integer "creator_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_events_on_creator_id"
+    t.index ["date"], name: "index_events_on_date"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "remember_token"
   end
 
 end

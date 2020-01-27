@@ -1,5 +1,28 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= link_to event.description, event %> <br> 
-  </div>
-</div>
+<% @event = event %>
+<% if @event %>
+  <li class="event card" id="event-<%= @event.id %>">
+    <div class="card-body">
+      <span class="creator a-white">
+        <strong>CREATED BY:</strong> <%= @event.creator.name %>
+      </span>
+      <span class="title">
+        <strong>SUBJECT:</strong> <%= @event.title %>
+      </span>
+      <span class="description">
+        <strong>DESCRIPTION:</strong> <%= @event.description %>
+      </span>
+      <span class="location">
+        <strong>VENUE:</strong> <%= @event.location %>
+      </span>
+      <span class="date">
+        <strong>DATE:</strong> <%= @event.date %>
+      </span>
+      <span class="timestamp">
+        <small>Created <%= time_ago_in_words(@event.created_at) %> ago.</small>
+      </span>
+    <div>
+    <%= link_to event_path(@event), class: "card-overlay", data: { confirm: "Move to : #{@event.title}?" } do %>
+      <%= render 'shared/stats', event: @event %>
+    <% end %>
+  </li>
+<% end %>

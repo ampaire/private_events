@@ -1,16 +1,18 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get "/login", to: "sessions#new"
-  post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
-  get "/signup", to: "users#new"
+  root 'events#index'
 
-  put "/attend", to: "users#attending"
-  delete "/not_attend", to: "users#not_attending"
+  get     'signup',      to: 'users#new'
+  post    'signup',      to: 'users#create'
+  get     'login',       to: 'sessions#new'
+  post    'login',       to: 'sessions#create'
+  delete  'logout',      to: 'sessions#destroy'
+  get     'events',      to: 'events#new'
+  post    'events',      to: 'events#create'
+  post    'attendances', to: 'attendances#attend'
+  delete  'attendances', to: 'attendances#leave'
 
-  resources :users
-  resources :events
-  resources :attended_events
-  root "sessions#new"
+  resources :users, only: %i[show]
+  resources :events, only: %i[index show destroy]
 end

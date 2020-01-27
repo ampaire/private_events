@@ -1,9 +1,14 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+michael:
+  title: Faker::Book.title
+  description: Faker::TvShows::TheITCrowd.quote
+  date: time_rand
+  location: Faker::Address.full_address
+  creator: michael
 
-one:
-  date: 2019-11-13 16:48:35
-  description: MyText
-
-two:
-  date: 2019-11-13 16:48:35
-  description: MyText
+archer:
+  title: Faker::Book.title
+  description: Faker::TvShows::TheITCrowd.quote
+  date: time_rand
+  location: Faker::Address.full_address
+  creator: archer

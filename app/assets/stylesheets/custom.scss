@@ -1,180 +1,104 @@
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
-/* mixins, variables, etc. */
-
-$light-gray: #777;
-$gray-medium-light: #eaeaea;
+$border-style: 0.5px solid #ccc;
 
 @mixin box_sizing {
-  -moz-box-sizing: border-box;
+  -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  box-sizing:         border-box;
 }
 
-/* header */
-
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-
+header a {
+  color: white;
   &:hover {
-    color: #fff;
-    text-decoration: none;
+    color: white;
   }
 }
 
-/* Main message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-
-  .btn {
-    padding: 14px 24px;
-    font-size: 21px;
+.a-white {
+  a {
+    color: white;
   }
 }
 
-.buttonme {
-  text-align: center;
-  border-bottom: 1px;
-
-  .btn {
-    padding: 14px 24px;
-    font-size: 21px;
+.a-black {
+  a {
+    color: black;
   }
 }
 
-/* typography */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  line-height: 1;
+.d-inline {
+  display: inline-block;
 }
 
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
+.card {
+  position: relative;
+  .card-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+}
+
+h1{
   text-align: center;
 }
-
-h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: $light-gray;
-}
-
-h3 {
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: Black;
-}
-
-h4 {
-  color: Black;
-  font-weight: bold;
-}
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-}
-
-/* universal */
 
 body {
-  padding-top: 60px;
+  margin-top: 7rem;
 }
 
-section {
-  overflow: auto;
+.main-title {
+  font-size: 3rem;
+  line-height: 5rem;
+  height: 5rem;
 }
 
-textarea {
-  resize: vertical;
-}
-
-.center {
-  text-align: center;
-
-  h1 {
-    margin-bottom: 10px;
-  }
-}
-
-/* footer */
-
-footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid $gray-medium-light;
-  color: $light-gray;
-
+.navbar-inverse .navbar-nav > .welcome-user {
   a {
-    color: $gray;
+    color: white;
+  }
+}
 
+.text-white {
+  color: white;
+  a {
+    color: white;
     &:hover {
-      color: $gray-darker;
-    }
-  }
-
-  small {
-    float: left;
-  }
-
-  ul {
-    float: right;
-    list-style: none;
-
-    li {
-      float: left;
-      margin-left: 15px;
+      color: white;
     }
   }
 }
 
-.users {
-  list-style: none;
-  margin: 0;
-  padding-left: 0;
+.divider {
+  border: $border-style;
+}
 
-  li {
-    overflow: auto;
-    text-align: center;
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
+.my-3 {
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+}
 
-    &:last-child {
-      border-bottom: 1px solid #e8e8e8;
-    }
-  }
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
 }
 
 /* forms */
 
-input,
-textarea,
-select,
-.uneditable-input {
-  border: 1px solid #bbb;
+input, textarea, select, .uneditable-input {
+  border: $border-style;
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
   @include box_sizing;
 }
 
@@ -184,7 +108,6 @@ input {
 
 #error_explanation {
   color: red;
-
   ul {
     color: red;
     margin: 0 0 30px 0;
@@ -193,22 +116,57 @@ input {
 
 .field_with_errors {
   @extend .has-error;
-
   .form-control {
     color: $state-danger-text;
   }
 }
 
-.checkbox {
-  margin-top: -10px;
-  margin-bottom: 10px;
+/* sidebar */
 
-  span {
-    margin-left: 20px;
-    font-weight: normal;
+.event{
+  background: #ccc;
+  margin: 10px;
+  flex: 100%;
+  padding: 20px;
+  span{
+    color: #000;
+    display: block;
   }
 }
 
-.btncustom {
-  padding-left: 40%;
+.events{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin-left: -10px;
+  margin-right: -10px;
+  list-style-type: none;
+}
+
+.d-hidden {
+  display: hidden;
+}
+
+.word-break {
+  word-wrap: break-word;
+}
+
+.action-btn{
+  display: inline-block;
+  height: 30px;
+  width: 80px;
+  background: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  position: absolute;
+  bottom: 10px;
+}
+
+.event-header{
+  font-size: 30px;
+}
+
+span.timestamp {
+    margin-bottom: 30px;
 }
