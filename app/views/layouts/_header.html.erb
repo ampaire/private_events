@@ -12,6 +12,7 @@
             <%= link_to "Welcome! #{@user.name}", user_path(@user), class: "d-inline text-white" %>
           </li>
           <li><%= link_to "Create Event", events_path %></li>
+          <li><%= link_to "Events", root_path %></li>
           <li><%= link_to "Log out", logout_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "Register", signup_path %></li>

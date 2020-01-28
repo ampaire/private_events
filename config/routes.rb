@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   delete  'logout',      to: 'sessions#destroy'
   get     'events',      to: 'events#new'
   post    'events',      to: 'events#create'
+  get     'events',      to: 'events#show'
   post    'attendances', to: 'attendances#attend'
   delete  'attendances', to: 'attendances#leave'
 
