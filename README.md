@@ -1,24 +1,78 @@
-# README
+# Associations With Rails - Eventbrite Clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A site similar to a private Eventbrite which allows users to create events and then manage user signups. Users can create events and send invitations and parties. Events take place at a specific date and at a location. This project is designed to mimic the logic behind [Eventbrite](https://www.https:/www.eventbrite.com/).
 
-Things you may want to cover:
 
-* Ruby version
+## Technologies
 
-* System dependencies
+- HTML
+- CSS
+- SASS
+- Ruby
+- Ruby on Rails
 
-* Configuration
+## Usage
 
-* Database creation
+> Clone the repository to your local machine
 
-* Database initialization
+```
+$ git clone git@github.com:ampaire/private_events.git
+```
 
-* How to run the test suite
+> cd into the directory
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ cd private_events
+```
 
-* Deployment instructions
+> Then install the needed gems (while skipping any gems needed only in production):
 
-* ...
+```
+$ bundle install --without production
+```
+
+> Next, migrate the database:
+
+```
+$ rails db:migrate
+```
+
+Finally, run the test suite to verify that everything is working correctly:
+
+```
+$ rails test
+```
+
+> If the test suite passes, you'll be ready to run the app in a local server:
+
+```
+$ rails server
+```
+
+[![Run on Repl.it](https://repl.it/badge/github/rOluochKe/test)](https://repl.it/github/rOluochKe/test)
+
+## Functionalities
+
+- Create an account
+- Login with an email
+- Create an events
+- Attend other people's events
+- People attending your events
+- Check your upcoming and past events
+
+## Designed and developed by
+
+[Phemia Ampaire](https://github.com/ampaire) &&
+[Raymond Oluoch](https://github.com/rOluochKe)
+
+## Contributing
+
+1. Fork it (git clone git@github.com:ampaire/private_events/fork)
+2. Create your feature branch (git checkout -b feature/[choose-a-name])
+3. Commit your changes (git commit -am 'What this commit will fix/add')
+4. Push to the branch (git push origin feature/[chosen name])
+5. Create a new Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE.md) file for details

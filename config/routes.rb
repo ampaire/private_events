@@ -1,3 +1,19 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root 'events#index'
+
+  get     'signup',      to: 'users#new'
+  post    'signup',      to: 'users#create'
+  get     'login',       to: 'sessions#new'
+  post    'login',       to: 'sessions#create'
+  delete  'logout',      to: 'sessions#destroy'
+  get     'events',      to: 'events#new'
+  post    'events',      to: 'events#create'
+  get     'events',      to: 'events#show'
+  post    'attendances', to: 'attendances#attend'
+  delete  'attendances', to: 'attendances#leave'
+
+  resources :users, only: %i[show]
+  resources :events, only: %i[index show destroy]
 end
